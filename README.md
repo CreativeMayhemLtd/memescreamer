@@ -48,3 +48,5 @@ Memescreamer is built for storytellers, broadcasters, strategists, and creatives
 
 **No studio. No crew. No delay.**  
 **Memescreamer:** Input. Transformation. Transmission.
+
+[![EU AI Act Transparency](https://img.shields.io/badge/EU%20AI%20Act-Transparency-blue)](AI_COMPLIANCE.md)
