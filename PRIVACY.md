@@ -46,6 +46,16 @@ We process publicly available content solely for automated media generation, com
 - **Under CCPA/CPRA:** We do not “sell” or “share” personal information as defined by California law  
 - **Under LGPD:** Processing is based on legitimate interest (Art. 7, IX)
 
+## 4.1 Text and Data Mining (TDM) Compliance – Directive (EU) 2019/790
+
+Memescreamer performs automated text and data mining (TDM) of publicly available works in accordance with Directive (EU) 2019/790, Articles 3 and 4.  
+
+- **Lawful Access:** Only content that is publicly accessible without authentication, login, or payment is processed.  
+- **Opt-Out Respect:** We respect rightsholder reservations against TDM expressed through machine-readable means (e.g., robots.txt, metadata).  
+- **Temporary Copies:** Copies made during TDM are used solely for mining purposes and are automatically deleted within 96 hours.  
+- **Transformative Output:** The system does not reproduce or redistribute original works. Instead, it generates new satirical and transformative commentary, which is separately protected under Article 17(7) (parody, caricature, pastiche).  
+- **FailSafe Opt-Out:** If you do not wish your publicly available content to be processed despite these safeguards, please contact us. We will honor requests and maintain content farming deny-lists respectfully.  
+
 ---
 
 ## 5. Data Retention
