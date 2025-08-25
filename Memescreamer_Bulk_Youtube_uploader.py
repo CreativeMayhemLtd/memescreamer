@@ -101,7 +101,9 @@ except ImportError:
     print("❌ YouTube API libraries not installed. Run: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client")
     sys.exit(1)
 
-LOCAL_TZ = timezone.utc
+# Use local timezone instead of forcing UTC
+import datetime as dt
+LOCAL_TZ = dt.datetime.now().astimezone().tzinfo
 UTC = timezone.utc
 
 def _nfc(s: str) -> str:
