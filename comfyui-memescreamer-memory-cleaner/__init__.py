@@ -21,10 +21,32 @@ __license__ = "MIT"
 __all__ = ["MemescreamerMemoryCleaner", "NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
 
 # Import main module components
+import os
+import sys
+
+# Add current directory to path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 try:
-    from memescreamer_memory_cleaner import MemescreamerMemoryCleaner
-    print("[MemescreamerMemoryCleaner] Package loaded successfully")
-    
+    # Try relative import first (preferred for ComfyUI)
+    from .memescreamer_memory_cleaner import MemescreamerMemoryCleaner
+    print("[MemescreamerMemoryCleaner] Package loaded successfully (relative import)")
+except ImportError:
+    try:
+        # Fallback to absolute import
+        from memescreamer_memory_cleaner import MemescreamerMemoryCleaner
+        print("[MemescreamerMemoryCleaner] Package loaded successfully (absolute import)")
+    except ImportError as e:
+        print(f"[MemescreamerMemoryCleaner] Error: Could not import main module: {e}")
+        # Provide empty mappings if import fails
+        NODE_CLASS_MAPPINGS = {}
+        NODE_DISPLAY_NAME_MAPPINGS = {}
+        MemescreamerMemoryCleaner = None
+
+# Only create mappings if import was successful
+if 'MemescreamerMemoryCleaner' in locals() and MemescreamerMemoryCleaner is not None:
     # ComfyUI Node Registration - Required for node discovery
     NODE_CLASS_MAPPINGS = {
         "MemescreamerMemoryCleaner": MemescreamerMemoryCleaner
@@ -33,10 +55,7 @@ try:
     NODE_DISPLAY_NAME_MAPPINGS = {
         "MemescreamerMemoryCleaner": "Memescreamer Memory Cleaner"
     }
-    
-except ImportError as e:
-    print(f"[MemescreamerMemoryCleaner] Warning: Could not import main module: {e}")
-    # Provide empty mappings if import fails
+else:
     NODE_CLASS_MAPPINGS = {}
     NODE_DISPLAY_NAME_MAPPINGS = {}
 
