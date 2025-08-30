@@ -1,63 +1,50 @@
-# ComfyUI MemescreamerMemoryCleaner
-
-# -*- coding: utf-8 -*-
-
-"""
-ComfyUI MemescreamerMemoryCleaner Package
-
-This package provides comprehensive memory management for ComfyUI workflows,
-featuring both VRAM and system RAM clearing capabilities with cross-platform support.
-
-Modules:
-    memescreamer_memory_cleaner: Main memory management node implementation
-"""
-
-__version__ = "1.0.0"
-__author__ = "Memescreamer Memory Management"
-__description__ = "Comprehensive memory management for ComfyUI workflows"
-__license__ = "MIT"
-
-# Package metadata
-__all__ = ["MemescreamerMemoryCleaner", "NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
-
-# Import main module components
-import os
 import sys
+import os
+import traceback
+import importlib.util
 
-# Add current directory to path for imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.insert(0, current_dir)
+NODE_CLASS_MAPPINGS = {}
+NODE_DISPLAY_NAME_MAPPINGS = {}
 
-try:
-    # Try relative import first (preferred for ComfyUI)
-    from .memescreamer_memory_cleaner import MemescreamerMemoryCleaner
-    print("[MemescreamerMemoryCleaner] Package loaded successfully (relative import)")
-except ImportError:
+# Define directory and log path
+NODE_DIR = os.path.dirname(__file__)
+APP_ROOT = os.path.abspath(os.path.join(NODE_DIR, "..", ".."))
+LOG_PATH = os.path.join(APP_ROOT, "output", "memescreamer", "boot_error.log")
+os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+
+def try_import(filename, symbol, display):
+    path = os.path.join(NODE_DIR, f"{filename}.py")
+    if not os.path.exists(path):
+        msg = f"❌ {display}: File not found: {path}"
+        print(msg)
+        with open(LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(f"[ERROR] {msg}\n")
+        return
+
     try:
-        # Fallback to absolute import
-        from memescreamer_memory_cleaner import MemescreamerMemoryCleaner
-        print("[MemescreamerMemoryCleaner] Package loaded successfully (absolute import)")
-    except ImportError as e:
-        print(f"[MemescreamerMemoryCleaner] Error: Could not import main module: {e}")
-        # Provide empty mappings if import fails
-        NODE_CLASS_MAPPINGS = {}
-        NODE_DISPLAY_NAME_MAPPINGS = {}
-        MemescreamerMemoryCleaner = None
+        spec = importlib.util.spec_from_file_location(symbol, path)
+        if spec is None or spec.loader is None:
+            msg = f"❌ {display}: Could not load spec for {symbol} from {path}"
+            print(msg)
+            with open(LOG_PATH, "a", encoding="utf-8") as f:
+                f.write(f"[ERROR] {msg}\n")
+            return
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        cls = getattr(module, symbol)
+        NODE_CLASS_MAPPINGS[symbol] = cls
+        NODE_DISPLAY_NAME_MAPPINGS[symbol] = f"Memescreamer: {display}"
+        print(f"✅ {display}: Loaded {symbol} from {filename}")
+    except Exception as e:
+        msg = f"❌ {display}: Failed to load {symbol} from {filename} — {e}"
+        print(msg)
+        print(traceback.format_exc())
+        with open(LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(f"[ERROR] {msg}\n")
+            f.write(traceback.format_exc())
 
-# Only create mappings if import was successful
-if 'MemescreamerMemoryCleaner' in locals() and MemescreamerMemoryCleaner is not None:
-    # ComfyUI Node Registration - Required for node discovery
-    NODE_CLASS_MAPPINGS = {
-        "MemescreamerMemoryCleaner": MemescreamerMemoryCleaner
-    }
-
-    NODE_DISPLAY_NAME_MAPPINGS = {
-        "MemescreamerMemoryCleaner": "Memescreamer Memory Cleaner"
-    }
-else:
-    NODE_CLASS_MAPPINGS = {}
-    NODE_DISPLAY_NAME_MAPPINGS = {}
+# Load the memory cleaner node
+try_import("memescreamer_memory_cleaner", "MemescreamerMemoryCleaner", "🧹 Memory Cleaner")
 
 # Version info
 VERSION_INFO = {
