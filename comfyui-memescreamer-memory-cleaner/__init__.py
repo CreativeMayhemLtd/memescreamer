@@ -18,14 +18,27 @@ __description__ = "Comprehensive memory management for ComfyUI workflows"
 __license__ = "MIT"
 
 # Package metadata
-__all__ = ["memescreamer_memory_cleaner"]
+__all__ = ["MemescreamerMemoryCleaner", "NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
 
 # Import main module components
 try:
-    from .memescreamer_memory_cleaner import MemescreamerMemoryCleaner
+    from memescreamer_memory_cleaner import MemescreamerMemoryCleaner
     print("[MemescreamerMemoryCleaner] Package loaded successfully")
+    
+    # ComfyUI Node Registration - Required for node discovery
+    NODE_CLASS_MAPPINGS = {
+        "MemescreamerMemoryCleaner": MemescreamerMemoryCleaner
+    }
+
+    NODE_DISPLAY_NAME_MAPPINGS = {
+        "MemescreamerMemoryCleaner": "Memescreamer Memory Cleaner"
+    }
+    
 except ImportError as e:
     print(f"[MemescreamerMemoryCleaner] Warning: Could not import main module: {e}")
+    # Provide empty mappings if import fails
+    NODE_CLASS_MAPPINGS = {}
+    NODE_DISPLAY_NAME_MAPPINGS = {}
 
 # Version info
 VERSION_INFO = {
