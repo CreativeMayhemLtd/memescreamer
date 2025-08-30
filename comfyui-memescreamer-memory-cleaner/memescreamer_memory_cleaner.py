@@ -44,6 +44,7 @@ import ctypes
 import os
 
 class MemescreamerMemoryCleaner:
+    FUNCTION = "__call__"
     """
     Comprehensive Memory Management for ComfyUI Workflows
     
@@ -62,10 +63,13 @@ class MemescreamerMemoryCleaner:
     @classmethod
     def INPUT_TYPES(s):
         return {
-            "required": {
-                "images": ("IMAGE", {}),
-            },
+            "required": {},
             "optional": {
+                "image": ("IMAGE",),
+                "audio": ("AUDIO",),
+                "latent": ("LATENT",),
+                "conditioning": ("CONDITIONING",),
+                "mask": ("MASK",),
                 "force_gc": ("BOOLEAN", {"default": True}),
                 "clear_cache": ("BOOLEAN", {"default": True}),
                 "sync_cuda": ("BOOLEAN", {"default": True}),
@@ -75,18 +79,41 @@ class MemescreamerMemoryCleaner:
                 "verbose": ("BOOLEAN", {"default": True}),
             }
         }
-    
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("images",)
-    FUNCTION = "clear_memory"
+
+    RETURN_TYPES = ("IMAGE", "AUDIO", "LATENT", "CONDITIONING", "MASK")
+    RETURN_NAMES = ("output_image", "output_audio", "output_latent", "output_conditioning", "output_mask")
+
+    FUNCTION = "__call__"
+
+    def __call__(self, *args, **kwargs):
+        # Accept all possible inputs, ignore unknowns for passthrough
+        image = kwargs.get("image", None)
+        audio = kwargs.get("audio", None)
+        latent = kwargs.get("latent", None)
+        conditioning = kwargs.get("conditioning", None)
+        mask = kwargs.get("mask", None)
+        force_gc = kwargs.get("force_gc", True)
+        clear_cache = kwargs.get("clear_cache", True)
+        sync_cuda = kwargs.get("sync_cuda", True)
+        clear_system_ram = kwargs.get("clear_system_ram", True)
+        aggressive_ram_clear = kwargs.get("aggressive_ram_clear", False)
+        wait_ms = kwargs.get("wait_ms", 100)
+        verbose = kwargs.get("verbose", True)
+
+        # Only call clear_memory with the correct arguments
+        if any(x is not None for x in [image, audio, latent, conditioning, mask]):
+            self.clear_memory(force_gc, clear_cache, sync_cuda, clear_system_ram, aggressive_ram_clear, wait_ms, verbose)
+
+        # Always return outputs in the correct order
+        return image, audio, latent, conditioning, mask
     CATEGORY = "memescreamer/memory"
     
-    def clear_memory(self, images, force_gc=True, clear_cache=True, sync_cuda=True, clear_system_ram=True, aggressive_ram_clear=False, wait_ms=100, verbose=True):
+    def clear_memory(self, input, force_gc=True, clear_cache=True, sync_cuda=True, clear_system_ram=True, aggressive_ram_clear=False, wait_ms=100, verbose=True):
         """
         Clear both CUDA VRAM and system RAM to prevent memory leaks.
         
         Args:
-            images: Input images (passed through unchanged)
+            input: Any input (images, audio, video, signals) - passed through unchanged
             force_gc: Enable Python garbage collection
             clear_cache: Clear CUDA memory cache
             sync_cuda: Synchronize CUDA operations
@@ -96,7 +123,7 @@ class MemescreamerMemoryCleaner:
             verbose: Enable detailed console logging
             
         Returns:
-            Tuple containing the input images unchanged
+            Tuple containing the input unchanged
         """
         try:
             start_time = time.time()
@@ -154,7 +181,7 @@ class MemescreamerMemoryCleaner:
         except Exception as e:
             print(f"[MemescreamerMemoryCleaner] Warning: {e}")
         
-        return (images,)
+        return (input,)
     
     def clear_system_ram_cache(self, aggressive=False, verbose=True):
         """
@@ -227,11 +254,4 @@ class MemescreamerMemoryCleaner:
             # Always do at least standard garbage collection
             gc.collect()
 
-# Node registration for ComfyUI
-NODE_CLASS_MAPPINGS = {
-    "MemescreamerMemoryCleaner": MemescreamerMemoryCleaner
-}
-
-NODE_DISPLAY_NAME_MAPPINGS = {
-    "MemescreamerMemoryCleaner": "Memescreamer Memory Cleaner"
-}
+# Note: Node registration is handled in __init__.py for ComfyUI compatibility

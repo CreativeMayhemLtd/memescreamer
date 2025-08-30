@@ -45,27 +45,3 @@ def try_import(filename, symbol, display):
 
 # Load the memory cleaner node
 try_import("memescreamer_memory_cleaner", "MemescreamerMemoryCleaner", "🧹 Memory Cleaner")
-
-# Version info
-VERSION_INFO = {
-    "major": 1,
-    "minor": 0,
-    "patch": 0,
-    "release": "stable"
-}
-
-def get_version():
-    """Return the current version string."""
-    return __version__
-
-def get_package_info():
-    """Return package information dictionary."""
-    return {
-        "name": "ComfyUI-MemescreamerMemoryCleaner",
-        "version": __version__,
-        "author": __author__,
-        "description": __description__,
-        "license": __license__,
-        "python_requires": ">=3.8",
-        "dependencies": ["torch", "gc", "time", "ctypes", "os"]
-    }
