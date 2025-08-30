@@ -11,7 +11,9 @@ This is a **public-facing stub** of the Memescreamer product.
 The full system is running privately, producing real-time audiovisual media at scale.  
 It’s deployed and working — across podcasts, video, and other experimental formats.
 
-See it on YouTube, Meta, TikTok, and other short-form platforms.  
+See it on YouTube, Spotify, RSS, and other short-form platforms.
+Note: We've been banned from Tiktok (3 seconds after first upload), and currently may be experiencing a ban with @soundcloud.
+
 Hear it in action at [**Doomscroll.fm**](https://doomscroll.fm) — a live proof-of-concept channel built entirely on Memescreamer.
 
 If you're exploring licensing, private deployment, or integration into your own media workflows, we’re open to serious inquiries.
