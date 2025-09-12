@@ -1,7 +1,8 @@
 # Memescreamer
 
 > **Official Repository**  
-> This is the canonical Memescreamer repo by **Creative Mayhem Ltd.**  
+> This is the canonical Memescreamer repo by **Creative Mayhem Ltd.**
+> **Code is CC BY-NC-SA 4.0. If you make money from it, you need a license from Creative Mayhem ltd.**
 > Forks are welcome, but attribution is required. Always link back here:  
 > https://github.com/CreativeMayhemLtd/memescreamer
 
