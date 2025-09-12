@@ -49,7 +49,7 @@ This project is **dual-licensed**:
 - **Non-Commercial**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)  
 - **Commercial use**: requires a paid license from Creative Mayhem Ltd.  
 
-See [LICENSE](./LICENSE.md) and [NOTICE](./NOTICE,md) for full details.  
+See [LICENSE](./LICENSE.md) and [NOTICE](./NOTICE.md) for full details.  
 For commercial licensing inquiries: licensing@memescreamer.com
 
 ---
