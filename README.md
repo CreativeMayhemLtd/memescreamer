@@ -18,7 +18,7 @@ It ingests global news, processes it with LLMs, generates commentary, music, and
 
 - **LLM commentary** → satirical, adversarial, culture-jamming voice  
 - **Music generation** → Generative scores  
-- **Video pipeline** → automated with ComfyUI flows  
+- **Video pipeline** → automated generation  
 - **Broadcast automation** → bulk uploading, live streaming, scheduling  
 
 This repository contains the CC BY-NC-SA 4.0 licensed components used in the Memescreamer production pipeline.  
