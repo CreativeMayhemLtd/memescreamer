@@ -54,7 +54,7 @@ Hereafter referred to as **Open Memescreamer**.
 
 👉 Replicating this output with SaaS would take a full team working 20+ hours/day. 
 
-** Memescreamer does it in 30 minutes of operator time **
+**Memescreamer does it in 30 minutes of operator time**
 
 ---
 
