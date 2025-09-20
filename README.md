@@ -17,7 +17,7 @@ Memescreamer is an **autonomous media engine** powering our proof-of-concept [Do
 It ingests global news, processes it with LLMs, generates commentary, music, and video, and broadcasts continuously with minimal human oversight.
 
 - **LLM commentary** → satirical, adversarial, culture-jamming voice  
-- **Music generation** → ACE-tag driven scores  
+- **Music generation** → Generative scores  
 - **Video pipeline** → automated with ComfyUI flows  
 - **Broadcast automation** → bulk uploading, live streaming, scheduling  
 
