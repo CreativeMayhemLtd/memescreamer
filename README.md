@@ -86,7 +86,7 @@ This project is **dual-licensed**:
 - **Commercial use**: requires a paid license from Creative Mayhem Ltd.  
 
 See [LICENSE](./LICENSE.md) and [NOTICE](./NOTICE.md) for full details.  
-For commercial licensing inquiries: licensing@memescreamer.com
+For commercial licensing inquiries: info@creativemayhem.ltd
 
 ---
 
@@ -107,6 +107,6 @@ If a fork does not have the same tags, it is not the canonical version.
 
 ## Contact
 
-- Commercial licensing: info@memescreamer.com  
-- General inquiries: info@doomscroll.fm  
-- Security reports: info@memescreamer.com
+- Commercial licensing: info@creativemayhem.ltd
+- General inquiries: info@creativemayhem.ltd  
+- Security reports: info@creativemayhem.ltd
