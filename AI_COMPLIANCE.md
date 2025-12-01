@@ -28,7 +28,8 @@ We recognize our responsibilities under the **EU AI Act (Regulation (EU) 2024/16
 
 ## 6. Documentation & Oversight
 - System limitations, training data scope, and architectural decisions are documented within this repository.  
-- A human maintainer oversees operation and intervenes in case of system faults.  
+- A human maintainer oversees operation and intervenes in case of system faults.
+- Certain releases contain forensic metadata and artistic steganographic elements for archival and provenance purposes only.
 
 ---
 📌 *This statement is provided in good faith to demonstrate compliance intent under the EU AI Act. 
