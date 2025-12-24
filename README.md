@@ -58,6 +58,11 @@ Hereafter referred to as **Open Memescreamer**.
 
 ---
 
+## Awards
+- December 2025 [AI-Arts.org: The Jury’s Special Recognition Award: Doomscroll.fm ](https://ai-arts.org/4th-ai-arts-competition-results/)
+
+---
+
 ## Synthetic Media Disclosure
 
 All outputs are **AI-generated**.  
