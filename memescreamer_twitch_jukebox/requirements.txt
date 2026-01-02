@@ -1,0 +1,16 @@
+twitchio==2.8.2
+yt-dlp>=2024.8.6
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+aiosqlite>=0.20.0
+loguru>=0.7.2
+
+# Hotdog_NotHotdog NSFW classifier dependencies
+# Note: torch is installed separately with CUDA support in Dockerfile
+open_clip_torch
+pillow
+numpy
+tqdm
+scikit-learn
+joblib
+opencv-python

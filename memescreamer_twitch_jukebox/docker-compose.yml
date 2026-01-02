@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  memescreamer_twitch_jukebox:
+    build: .
+    container_name: memescreamer_twitch_jukebox
+    env_file:
+      - .env
+    volumes:
+      - ./media:/app/media
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./content_filter.sh:/app/content_filter.sh:ro
+    restart: unless-stopped
+    # Uncomment for NVIDIA GPU support (requires nvidia-container-toolkit on host)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
