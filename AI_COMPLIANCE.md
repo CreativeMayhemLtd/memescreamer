@@ -1,36 +1,11 @@
-# ⚖️ EU AI Act Compliance Statement
+# Doomscroll.FM EU AI Act Compliance Statement — moved
 
-This project (Doomscroll.fm / Memescreamer Engine) is an **AI-powered media generation system** that ingests publicly available news and produces synthetic commentary, voice, and music.  
+The Doomscroll.FM EU AI Act (Regulation 2024/1689) compliance statement has moved to its canonical URL on the Doomscroll.FM site:
 
-We recognize our responsibilities under the **EU AI Act (Regulation (EU) 2024/1689)** and commit to the following:  
+**→ [https://doomscroll.fm/ai-compliance](https://doomscroll.fm/ai-compliance)**
 
----
+That page is the authoritative version and supersedes any prior AI-compliance summary previously hosted in this repository.
 
-## 1. Transparency
-- All content produced by this system is **AI-generated**.  
-- No attempt is made to disguise synthetic output as human-authored.  
+For inquiries: [privacy@doomscroll.fm](mailto:privacy@doomscroll.fm) / [info@creativemayhem.com](mailto:info@creativemayhem.com).
 
-## 2. Purpose & Scope
-- The system is designed for **satirical, artistic, commercial, and journalistic purposes**.  
-- It does **not** provide decision-making, profiling, or safety-critical functions.  
-
-## 3. Risk Classification
-- Based on current EU AI Act definitions, Doomscroll.fm does **not fall under “high-risk” AI** use cases.  
-- The underlying engine may be considered a **General-Purpose AI (GPAI)** system; therefore, we apply GPAI transparency measures.  
-
-## 4. Data Sources
-- Inputs are drawn exclusively from **publicly available news and media sources**.  
-- No personal or private user data is collected, stored, or processed.
-
-## 5. Prohibited Practices
-- The system does not employ **subliminal, manipulative, or exploitative techniques** (Article 5).  
-- It does not target or exploit vulnerable groups.  
-
-## 6. Documentation & Oversight
-- System limitations, training data scope, and architectural decisions are documented within this repository.  
-- A human maintainer oversees operation and intervenes in case of system faults.
-- Certain releases contain forensic metadata and artistic steganographic elements for archival and provenance purposes only.
-
----
-📌 *This statement is provided in good faith to demonstrate compliance intent under the EU AI Act. 
-
+_Operated by Creative Mayhem UG (haftungsbeschränkt) i.G., Berlin, Germany._
